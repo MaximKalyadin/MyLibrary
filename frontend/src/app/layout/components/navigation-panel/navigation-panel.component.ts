@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { Navigation } from '@core/models/navigation';
+import { Navigation } from '@core/models/types/navigation';
 
 @Component({
     selector: 'app-navigation-panel',

@@ -4,9 +4,10 @@ import { CommonModule } from '@angular/common';
 import { LayoutComponent } from './containers/layout/layout.component';
 import { NavigationPanelComponent } from './components/navigation-panel/navigation-panel.component';
 import { TaigaModule } from '../taiga/taiga.module';
+import { FilterComponent } from './components/filter/filter.component';
 
 @NgModule({
-    declarations: [LayoutComponent, NavigationPanelComponent],
+    declarations: [LayoutComponent, NavigationPanelComponent, FilterComponent],
     imports: [RouterModule, CommonModule, TaigaModule],
     exports: [LayoutComponent],
     providers: [],
