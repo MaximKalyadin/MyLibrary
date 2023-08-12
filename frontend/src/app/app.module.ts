@@ -12,6 +12,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { LayoutModule } from './layout/layout.module';
 
 @NgModule({
     declarations: [AppComponent],
@@ -25,6 +26,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
         TuiRootModule,
         TuiDialogModule,
         TuiAlertModule,
+        LayoutModule,
     ],
     providers: [{ provide: TUI_SANITIZER, useClass: NgDompurifySanitizer }],
     bootstrap: [AppComponent],
