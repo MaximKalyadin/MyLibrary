@@ -1,1 +1,55 @@
-<div class="filter"></div>
+<div class="filter">
+    <div class="filter__tags">
+        <tui-input-tag
+            class="filter__input"
+            [tuiTextfieldCleaner]="true"
+            tuiMode="onDark"
+            [uniqueTags]="true"
+            tuiTextfieldSize="m"
+            (searchChange)="changeTagInput($event)"
+            (keydown.enter)="keyupEnter()"
+        >
+            Тег
+        </tui-input-tag>
+        <tui-scrollbar class="filter__scroll">
+            <div class="filter__popular-tags">
+                <tui-badge
+                    *ngFor="let tag of popularTags$ | async"
+                    [ngClass]="{
+                        'filter__tag-select': tag.select
+                    }"
+                    size="l"
+                    status="custom"
+                    class="filter__tag"
+                    [value]="tag.name"
+                    [hoverable]="true"
+                    (click)="selectTag(tag)"
+                    ><tui-svg
+                        *ngIf="tag.select"
+                        [src]="'tuiIconCheck'"
+                    ></tui-svg
+                ></tui-badge>
+            </div>
+        </tui-scrollbar>
+    </div>
+    <div class="filter__search">
+        <tui-input
+            [tuiTextfieldCleaner]="true"
+            [tuiTextfieldIconLeft]="'tuiIconSearch'"
+            [tuiTextfieldLabelOutside]="true"
+            tuiMode="onDark"
+            class="filter__input"
+            tuiTextfieldSize="m"
+        >
+            Поиск
+            <input tuiTextfield placeholder="Поиск" />
+        </tui-input>
+        <button
+            tuiIconButton
+            type="button"
+            [icon]="'tuiIconPlusLarge'"
+            (click)="create()"
+            size="m"
+        ></button>
+    </div>
+</div>

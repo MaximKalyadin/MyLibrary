@@ -30,3 +30,7 @@ body {
     background-color: var(--color-background);
     font-style: normal;
 }
+
+input {
+    caret-color: var(--color-main) !important;
+}

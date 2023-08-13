@@ -17,6 +17,7 @@ import { Observable } from 'rxjs';
 export class FilterComponent {
     @Output() creation: EventEmitter<void> = new EventEmitter<void>();
     protected popularTags$: Observable<ITag[]>;
+    private tagChangeInput = '';
     constructor(private readonly store: FilterService) {
         this.popularTags$ = store.popularTags$;
     }
@@ -25,5 +26,22 @@ export class FilterComponent {
         this.creation.emit();
     }
 
-    selectTag(tag: ITag) {}
+    protected selectTag(tag: ITag) {
+        this.store.setSearchTagSelect(tag);
+    }
+
+    protected changeTagInput(tag: string) {
+        if (tag) {
+            this.tagChangeInput = tag;
+        }
+    }
+
+    protected keyupEnter() {
+        const tag: ITag = {
+            select: true,
+            name: this.tagChangeInput,
+        };
+        this.store.setSearchTagInput(tag);
+        this.tagChangeInput = '';
+    }
 }
