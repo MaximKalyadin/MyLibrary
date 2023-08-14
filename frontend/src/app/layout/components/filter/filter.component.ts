@@ -6,7 +6,8 @@ import {
 } from '@angular/core';
 import { FilterService } from '../../data-services/filter.service';
 import { ITag } from '@core/models/basic-models';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
+import { TUI_DEFAULT_MATCHER, tuiPure } from '@taiga-ui/cdk';
 
 @Component({
     selector: 'app-filter',
@@ -17,9 +18,15 @@ import { Observable } from 'rxjs';
 export class FilterComponent {
     @Output() creation: EventEmitter<void> = new EventEmitter<void>();
     protected popularTags$: Observable<ITag[]>;
-    private tagChangeInput = '';
+    protected allTags$: Observable<ITag[]>;
+
+    form = this.store.form;
+
+    search = '';
+
     constructor(private readonly store: FilterService) {
         this.popularTags$ = store.popularTags$;
+        this.allTags$ = store.allTags$;
     }
 
     protected create() {
@@ -27,21 +34,19 @@ export class FilterComponent {
     }
 
     protected selectTag(tag: ITag) {
-        this.store.setSearchTagSelect(tag);
+        this.store.onPopularTags(tag);
     }
 
-    protected changeTagInput(tag: string) {
-        if (tag) {
-            this.tagChangeInput = tag;
-        }
+    get filtered(): Observable<ITag[]> {
+        return this.filterBy(this.search);
     }
 
-    protected keyupEnter() {
-        const tag: ITag = {
-            select: true,
-            name: this.tagChangeInput,
-        };
-        this.store.setSearchTagInput(tag);
-        this.tagChangeInput = '';
+    @tuiPure
+    private filterBy(search: string): Observable<ITag[]> {
+        return this.allTags$.pipe(
+            map((tags) =>
+                tags.filter((tag) => TUI_DEFAULT_MATCHER(tag.name, search)),
+            ),
+        );
     }
 }

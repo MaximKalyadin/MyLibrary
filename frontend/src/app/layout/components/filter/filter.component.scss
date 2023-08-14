@@ -32,6 +32,10 @@
         gap: 10px;
     }
 
+    &__data-list-wrapper {
+        max-height: 300px;
+    }
+
     &__tag {
         background: var(--color-autofill);
         border-radius: 30px !important;

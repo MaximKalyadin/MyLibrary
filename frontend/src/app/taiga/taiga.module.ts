@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import {
     TuiButtonModule,
+    TuiDataListModule,
     TuiHintModule,
     TuiModeModule,
     TuiScrollbarModule,
@@ -9,11 +10,13 @@ import {
 } from '@taiga-ui/core';
 import {
     TuiBadgeModule,
+    TuiDataListWrapperModule,
     TuiInputModule,
     TuiInputTagModule,
+    TuiMultiSelectModule,
     TuiTagModule,
 } from '@taiga-ui/kit';
-import { TuiValueChangesModule } from '@taiga-ui/cdk';
+import { TuiLetModule, TuiValueChangesModule } from '@taiga-ui/cdk';
 @NgModule({
     imports: [
         TuiSvgModule,
@@ -27,6 +30,10 @@ import { TuiValueChangesModule } from '@taiga-ui/cdk';
         TuiScrollbarModule,
         TuiBadgeModule,
         TuiValueChangesModule,
+        TuiMultiSelectModule,
+        TuiLetModule,
+        TuiDataListWrapperModule,
+        TuiDataListModule,
     ],
     exports: [
         TuiSvgModule,
@@ -40,6 +47,10 @@ import { TuiValueChangesModule } from '@taiga-ui/cdk';
         TuiScrollbarModule,
         TuiBadgeModule,
         TuiValueChangesModule,
+        TuiMultiSelectModule,
+        TuiLetModule,
+        TuiDataListWrapperModule,
+        TuiDataListModule,
     ],
 })
 export class TaigaModule {}

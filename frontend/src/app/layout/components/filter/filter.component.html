@@ -1,16 +1,33 @@
-<div class="filter">
+<div class="filter" [formGroup]="form">
     <div class="filter__tags">
-        <tui-input-tag
-            class="filter__input"
-            [tuiTextfieldCleaner]="true"
-            tuiMode="onDark"
-            [uniqueTags]="true"
-            tuiTextfieldSize="m"
-            (searchChange)="changeTagInput($event)"
-            (keydown.enter)="keyupEnter()"
-        >
-            Тег
-        </tui-input-tag>
+        <ng-container *ngIf="allTags$ | async as allTags">
+            <tui-input-tag
+                [formControl]="form.controls.tags"
+                class="filter__input"
+                [tuiTextfieldCleaner]="true"
+                [tuiTextfieldLabelOutside]="true"
+                tuiMode="onDark"
+                [uniqueTags]="true"
+                tuiTextfieldSize="m"
+                [expandable]="false"
+                [(search)]="search"
+            >
+                Тег
+                <ng-container *ngIf="filtered | async as filter">
+                    <ng-container *ngIf="filter.length">
+                        <tui-data-list *tuiDataList>
+                            <button
+                                *ngFor="let item of filter"
+                                tuiOption
+                                [value]="item.name"
+                            >
+                                {{ item.name }}
+                            </button>
+                        </tui-data-list>
+                    </ng-container>
+                </ng-container>
+            </tui-input-tag>
+        </ng-container>
         <tui-scrollbar class="filter__scroll">
             <div class="filter__popular-tags">
                 <tui-badge
@@ -34,6 +51,7 @@
     </div>
     <div class="filter__search">
         <tui-input
+            [formControl]="form.controls.search"
             [tuiTextfieldCleaner]="true"
             [tuiTextfieldIconLeft]="'tuiIconSearch'"
             [tuiTextfieldLabelOutside]="true"

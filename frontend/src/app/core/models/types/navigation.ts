@@ -1,4 +1,5 @@
 import { Router } from '@angular/router';
+import { Inject } from '@angular/core';
 
 export class Navigation {
     name: string;
@@ -6,12 +7,13 @@ export class Navigation {
     icon: string;
     active: boolean;
 
+    private readonly router: Router = Inject(Router);
+
     constructor(
         private readonly _name: string,
         private readonly _icon: string,
         private readonly _active?: boolean,
         private readonly _url?: string,
-        private readonly router?: Router,
     ) {
         this.url = _url ?? '';
         this.name = _name;
@@ -21,7 +23,7 @@ export class Navigation {
 
     public navigate(): void {
         if (this._url) {
-            this.router?.navigate([this._url]);
+            this.router.navigate([this._url]);
         }
     }
 }

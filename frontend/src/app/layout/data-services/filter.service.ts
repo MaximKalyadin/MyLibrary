@@ -1,19 +1,16 @@
 import { Injectable } from '@angular/core';
 import { ComponentStore } from '@ngrx/component-store';
 import { ITag } from '@core/models/basic-models';
-import { Observable } from 'rxjs';
+import { filter, Observable, of, tap, withLatestFrom } from 'rxjs';
 import { IFilterConfig } from '@core/models/intermediate-models';
+import { FormControl, FormGroup } from '@angular/forms';
 
 interface FilterState {
-    search: string;
-    searchTags: ITag[];
     allTags: ITag[];
     popularTags: ITag[];
 }
 
 const defaultState: FilterState = {
-    search: '',
-    searchTags: [],
     allTags: [
         {
             select: false,
@@ -46,7 +43,7 @@ const defaultState: FilterState = {
             name: 'JavaScript',
         },
         {
-            select: true,
+            select: false,
             name: 'Angular',
         },
         {
@@ -58,104 +55,47 @@ const defaultState: FilterState = {
 
 @Injectable()
 export class FilterService extends ComponentStore<FilterState> {
-    private maxCountPopularTag = 5;
+    private maxCountPopularTag = 20;
+
+    form = new FormGroup({
+        search: new FormControl<string>(''),
+        tags: new FormControl<string[]>([], {
+            nonNullable: true,
+        }),
+    });
+
     constructor() {
         super(defaultState);
-    }
 
-    readonly setSearch = this.updater((state, search: string) => ({
-        ...state,
-        search,
-    }));
-
-    readonly clearSearch = this.updater((state) => ({
-        ...state,
-        search: '',
-    }));
-
-    readonly setSearchTags = this.updater((state, searchTags: ITag[]) => ({
-        ...state,
-        searchTags,
-    }));
-
-    readonly setSearchTagInput = this.updater((state, tag: ITag) => ({
-        ...state,
-        searchTags: this._setSearchTagInput(
-            tag,
-            state.popularTags,
-            state.searchTags,
-            state.allTags,
-        ),
-    }));
-
-    private _setSearchTagInput(
-        tag: ITag,
-        popularTags: ITag[],
-        searchTags: ITag[],
-        allTags: ITag[],
-    ): ITag[] {
-        const result = [...searchTags];
-        let index = result.findIndex((value) => value.name === tag.name);
-        if (index === -1) {
-            result.push(tag);
-        }
-
-        if (allTags.map((value) => value.name).includes(tag.name)) {
-            const popular = [...popularTags];
-            index = popular.findIndex((value) => value.name === tag.name);
-            if (index >= 0) {
-                popular[index].select = true;
-            } else {
-                popular.unshift({
-                    ...tag,
-                    select: true,
-                });
-            }
-            if (popular.length > this.maxCountPopularTag) {
-                popular.pop();
-            }
-            this.setPopularTags(popular);
-        }
-        return result;
-    }
-
-    readonly setSearchTagSelect = this.updater((state, tag: ITag) => ({
-        ...state,
-        searchTags: this._setSearchTagSelect(
-            tag,
-            state.popularTags,
-            state.searchTags,
-        ),
-    }));
-
-    private _setSearchTagSelect(
-        tag: ITag,
-        popularTags: ITag[],
-        searchTags: ITag[],
-    ): ITag[] {
-        const result = [...searchTags];
-        const findTagIndex = result.findIndex(
-            (value) => value.name === tag.name,
-        );
-        if (findTagIndex >= 0) {
-            result.splice(findTagIndex, 1);
-        } else {
-            result.push(tag);
-        }
-        const popular = [...popularTags].map((value) => {
-            if (value.name === tag.name) {
-                value.select = !value.select;
-            }
-            return value;
+        const _ = this.effect(() => {
+            return this.form.controls.tags.valueChanges.pipe(
+                tap((data) => {
+                    // this.updatePopularTags(data);
+                }),
+            );
         });
-        this.setPopularTags(popular);
-        return result;
     }
 
-    readonly clearSearchTag = this.updater((state) => ({
-        ...state,
-        searchTag: null,
-    }));
+    readonly updatePopularTags = this.effect((start$: Observable<string[]>) => {
+        return start$.pipe(tap(([tags]) => {}));
+    });
+
+    readonly onPopularTags = this.effect((start$: Observable<ITag>) => {
+        return start$.pipe(
+            tap((tag) => {
+                let tags = [...(this.form.value.tags ?? [])];
+                tag.select = !tag.select;
+                if (!this.form.value.tags?.includes(tag.name)) {
+                    tags.push(tag.name);
+                } else {
+                    tags = tags.filter((value) => value !== tag.name);
+                }
+                this.form.patchValue({
+                    tags: tags,
+                });
+            }),
+        );
+    });
 
     readonly setPopularTags = this.updater((state, popularTags: ITag[]) => ({
         ...state,
@@ -175,18 +115,26 @@ export class FilterService extends ComponentStore<FilterState> {
         (state) => state.allTags,
     );
 
-    readonly filterConfig$: Observable<IFilterConfig> = this.select((state) => {
-        return {
-            search: state.search,
-            searchTags: state.searchTags,
-        };
+    readonly filterConfig$: Observable<IFilterConfig> = of({
+        search: this.form.value.search ?? '',
+        searchTags: this.form.value.tags?.map<ITag>((value) => {
+            return {
+                select: false,
+                name: value,
+            };
+        }),
     });
 
-    readonly filterSearch$: Observable<string> = this.select(
-        (state) => state.search,
+    readonly filterSearch$: Observable<string> = of(
+        this.form.value.search ?? '',
     );
 
-    readonly filterSearchTags$: Observable<ITag[]> = this.select(
-        (state) => state.searchTags,
+    readonly filterSearchTags$: Observable<ITag[]> = of(
+        this.form.value.tags?.map<ITag>((value) => {
+            return {
+                select: false,
+                name: value,
+            };
+        }) ?? [],
     );
 }

@@ -5,10 +5,11 @@ import { LayoutComponent } from './containers/layout/layout.component';
 import { NavigationPanelComponent } from './components/navigation-panel/navigation-panel.component';
 import { TaigaModule } from '../taiga/taiga.module';
 import { FilterComponent } from './components/filter/filter.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [LayoutComponent, NavigationPanelComponent, FilterComponent],
-    imports: [RouterModule, CommonModule, TaigaModule],
+    imports: [RouterModule, CommonModule, TaigaModule, ReactiveFormsModule],
     exports: [LayoutComponent],
     providers: [],
 })
