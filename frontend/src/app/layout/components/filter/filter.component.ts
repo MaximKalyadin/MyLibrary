@@ -6,8 +6,7 @@ import {
 } from '@angular/core';
 import { FilterService } from '../../data-services/filter.service';
 import { ITag } from '@core/models/basic-models';
-import { map, Observable } from 'rxjs';
-import { TUI_DEFAULT_MATCHER, tuiPure } from '@taiga-ui/cdk';
+import { Observable } from 'rxjs';
 
 @Component({
     selector: 'app-filter',
@@ -17,12 +16,12 @@ import { TUI_DEFAULT_MATCHER, tuiPure } from '@taiga-ui/cdk';
 })
 export class FilterComponent {
     @Output() creation: EventEmitter<void> = new EventEmitter<void>();
-    protected popularTags$: Observable<ITag[]>;
+    protected popularTags$: Observable<Map<string, ITag>>;
     protected allTags$: Observable<ITag[]>;
 
-    form = this.store.form;
+    protected form = this.store.form;
 
-    search = '';
+    protected search = '';
 
     constructor(private readonly store: FilterService) {
         this.popularTags$ = store.popularTags$;
@@ -38,15 +37,6 @@ export class FilterComponent {
     }
 
     get filtered(): Observable<ITag[]> {
-        return this.filterBy(this.search);
-    }
-
-    @tuiPure
-    private filterBy(search: string): Observable<ITag[]> {
-        return this.allTags$.pipe(
-            map((tags) =>
-                tags.filter((tag) => TUI_DEFAULT_MATCHER(tag.name, search)),
-            ),
-        );
+        return this.store.filterByAllTags(this.search);
     }
 }
