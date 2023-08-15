@@ -1,0 +1,13 @@
+<div class="navigation">
+    <div
+        class="navigation__menu"
+        [ngClass]="{
+            navigation__active: item.active
+        }"
+        *ngFor="let item of navigationMenu"
+        (click)="changePage(item)"
+    >
+        <tui-svg class="navigation__icon" [src]="item.icon"></tui-svg>
+        <span class="navigation__title">{{ item.name }}</span>
+    </div>
+</div>
