@@ -13,7 +13,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { LayoutModule } from './layout/layout.module';
-import { FilterService } from './layout/data-services/filter.service';
+import { FilterStoreService } from './layout/data-services/filter-store.service';
 
 @NgModule({
     declarations: [AppComponent],
@@ -31,7 +31,7 @@ import { FilterService } from './layout/data-services/filter.service';
     ],
     providers: [
         { provide: TUI_SANITIZER, useClass: NgDompurifySanitizer },
-        FilterService,
+        FilterStoreService,
     ],
     bootstrap: [AppComponent],
 })

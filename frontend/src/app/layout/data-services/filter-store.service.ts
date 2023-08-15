@@ -46,12 +46,28 @@ const defaultState: FilterState = {
         .set('DI', {
             select: false,
             name: 'DI',
+        })
+        .set('JS', {
+            select: false,
+            name: 'JS',
+        })
+        .set('Angular', {
+            select: false,
+            name: 'Angular',
+        })
+        .set('TypeScript', {
+            select: false,
+            name: 'TypeScript',
+        })
+        .set('JavaScript', {
+            select: false,
+            name: 'JavaScript',
         }),
 };
 
 @Injectable()
-export class FilterService extends ComponentStore<FilterState> {
-    private maxCountPopularTag = 3;
+export class FilterStoreService extends ComponentStore<FilterState> {
+    private maxCountPopularTag = 20;
 
     form = new FormGroup({
         search: new FormControl<string>(''),

@@ -4,7 +4,7 @@ import {
     EventEmitter,
     Output,
 } from '@angular/core';
-import { FilterService } from '../../data-services/filter.service';
+import { FilterStoreService } from '../../data-services/filter-store.service';
 import { ITag } from '@core/models/basic-models';
 import { Observable } from 'rxjs';
 
@@ -23,7 +23,7 @@ export class FilterComponent {
 
     protected search = '';
 
-    constructor(private readonly store: FilterService) {
+    constructor(private readonly store: FilterStoreService) {
         this.popularTags$ = store.popularTags$;
         this.allTags$ = store.allTags$;
     }

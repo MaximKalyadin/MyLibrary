@@ -28,28 +28,30 @@
                 </ng-container>
             </tui-input-tag>
         </ng-container>
-        <tui-scrollbar class="filter__scroll">
-            <div class="filter__popular-tags">
-                <ng-container *ngIf="popularTags$ | async as popularTags">
-                    <tui-badge
-                        *ngFor="let tag of popularTags.values()"
-                        [ngClass]="{
-                            'filter__tag-select': tag.select
-                        }"
-                        size="l"
-                        status="custom"
-                        class="filter__tag"
-                        [value]="tag.name"
-                        [hoverable]="true"
-                        (click)="selectTag(tag)"
-                        ><tui-svg
-                            *ngIf="tag.select"
-                            [src]="'tuiIconCheck'"
-                        ></tui-svg
-                    ></tui-badge>
-                </ng-container>
-            </div>
-        </tui-scrollbar>
+        <div class="filter__scroll-mobile">
+            <tui-scrollbar class="filter__scroll">
+                <div class="filter__popular-tags">
+                    <ng-container *ngIf="popularTags$ | async as popularTags">
+                        <tui-badge
+                            *ngFor="let tag of popularTags.values()"
+                            [ngClass]="{
+                                'filter__tag-select': tag.select
+                            }"
+                            size="l"
+                            status="custom"
+                            class="filter__tag"
+                            [value]="tag.name"
+                            [hoverable]="true"
+                            (click)="selectTag(tag)"
+                            ><tui-svg
+                                *ngIf="tag.select"
+                                [src]="'tuiIconCheck'"
+                            ></tui-svg
+                        ></tui-badge>
+                    </ng-container>
+                </div>
+            </tui-scrollbar>
+        </div>
     </div>
     <div class="filter__search">
         <tui-input
