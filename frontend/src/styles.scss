@@ -1,6 +1,8 @@
 @import '@taiga-ui/core/styles/taiga-ui-local.scss';
 
 :root {
+    background: #131313;
+
     // colors
     --color-background: #131313;
     --color-autofill: #2A2A2A;
@@ -20,10 +22,16 @@
 html {
     height: 100%;
     background-color: var(--color-background);
+    -webkit-overflow-scrolling: touch;
+    overflow: hidden;
 }
 
 body {
+    touch-action: none;
+    -ms-touch-action: none;
     -webkit-overflow-scrolling: touch;
+    overflow: hidden;
+    position: relative;
     width: 100%;
     height: 100%;
     margin: 0;
