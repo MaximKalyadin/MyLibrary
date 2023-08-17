@@ -12,6 +12,10 @@
         bottom: 30px;
         left: 50%;
         transform: translateX(-50%);
+
+        @media (max-width: 900px) {
+            bottom: 20px;
+        }
     }
 
     &__filter {

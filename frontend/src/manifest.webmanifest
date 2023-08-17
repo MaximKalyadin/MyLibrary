@@ -1,8 +1,8 @@
 {
-  "name": "frontend",
-  "short_name": "frontend",
-  "theme_color": "#1976d2",
-  "background_color": "#fafafa",
+  "name": "MyLibrary",
+  "short_name": "MyLibrary",
+  "theme_color": "#131313",
+  "background_color": "#131313",
   "display": "fullscreen",
   "scope": "./",
   "start_url": "./",
