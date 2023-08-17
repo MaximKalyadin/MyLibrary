@@ -5,6 +5,7 @@ import { map, Observable, of, tap, withLatestFrom } from 'rxjs';
 import { IFilterConfig } from '@core/models/intermediate-models';
 import { FormControl, FormGroup } from '@angular/forms';
 import { TUI_DEFAULT_MATCHER, tuiPure } from '@taiga-ui/cdk';
+import { Utils } from '@core/models/types/utils';
 
 interface FilterState {
     allTags: ITag[];
@@ -67,8 +68,6 @@ const defaultState: FilterState = {
 
 @Injectable()
 export class FilterStoreService extends ComponentStore<FilterState> {
-    private maxCountPopularTag = 20;
-
     form = new FormGroup({
         search: new FormControl<string>(''),
         tags: new FormControl<string[]>([], {
@@ -124,7 +123,7 @@ export class FilterStoreService extends ComponentStore<FilterState> {
                         }
                     });
 
-                    if (data.popular.size > this.maxCountPopularTag) {
+                    if (data.popular.size > Utils.MAX_DISPLAY_POPULAR_TAGS) {
                         let deleteKey: string = Array.from(data.popular).map(
                             (value) => value[1],
                         )[0].name;

@@ -1,5 +1,5 @@
 <div class="filter" [formGroup]="form">
-    <div class="filter__tags">
+    <div class="filter__tags" *ngIf="displayTagBlock">
         <ng-container *ngIf="allTags$ | async as allTags">
             <tui-input-tag
                 [formControl]="form.controls.tags"
@@ -11,6 +11,7 @@
                 tuiTextfieldSize="m"
                 [expandable]="false"
                 [(search)]="search"
+                (focusedChange)="focusInputTag($event)"
             >
                 Тег
                 <ng-container *ngIf="filtered | async as filter">
@@ -53,12 +54,13 @@
             </tui-scrollbar>
         </div>
     </div>
-    <div class="filter__search">
+    <div class="filter__search" *ngIf="displaySearchBlock">
         <tui-input
             [formControl]="form.controls.search"
             [tuiTextfieldCleaner]="true"
             [tuiTextfieldIconLeft]="'tuiIconSearch'"
             [tuiTextfieldLabelOutside]="true"
+            (focusedChange)="focusInput($event)"
             tuiMode="onDark"
             class="filter__input"
             tuiTextfieldSize="m"
