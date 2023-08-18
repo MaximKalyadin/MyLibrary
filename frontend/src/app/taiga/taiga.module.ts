@@ -17,6 +17,7 @@ import {
     TuiTagModule,
 } from '@taiga-ui/kit';
 import { TuiLetModule, TuiValueChangesModule } from '@taiga-ui/cdk';
+import { TuiRippleModule } from '@taiga-ui/addon-mobile';
 @NgModule({
     imports: [
         TuiSvgModule,
@@ -34,6 +35,7 @@ import { TuiLetModule, TuiValueChangesModule } from '@taiga-ui/cdk';
         TuiLetModule,
         TuiDataListWrapperModule,
         TuiDataListModule,
+        TuiRippleModule,
     ],
     exports: [
         TuiSvgModule,
@@ -51,6 +53,7 @@ import { TuiLetModule, TuiValueChangesModule } from '@taiga-ui/cdk';
         TuiLetModule,
         TuiDataListWrapperModule,
         TuiDataListModule,
+        TuiRippleModule,
     ],
 })
 export class TaigaModule {}

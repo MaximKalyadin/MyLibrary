@@ -7,13 +7,15 @@
     max-width: 328px;
     cursor: pointer;
 
+    @media (min-width: 900px) {
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+
     @media (max-width: 900px) {
         max-width: 172px;
         gap: 40px;
-    }
-
-    &:hover {
-        opacity: 0.8;
     }
 
     &__card {
@@ -56,7 +58,7 @@
 
         @media (max-width: 900px) {
             max-height: 36px;
-            height: 36px;
+            height: 33px;
         }
 
 
@@ -79,7 +81,7 @@
         }
 
         &__icon {
-
+            color: white;
         }
     }
 }

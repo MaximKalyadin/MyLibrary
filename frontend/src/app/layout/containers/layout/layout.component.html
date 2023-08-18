@@ -1,7 +1,9 @@
 <div class="main">
     <app-filter class="main__filter" />
-    <div class="main__container">
-        <router-outlet />
-    </div>
+    <tui-scrollbar>
+        <div class="main__container">
+            <router-outlet />
+        </div>
+    </tui-scrollbar>
     <app-navigation-panel class="main__navigation" />
 </div>
