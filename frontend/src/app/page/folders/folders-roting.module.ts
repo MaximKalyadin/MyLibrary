@@ -5,8 +5,12 @@ import { FoldersComponent } from './containers/folders/folders.component';
 const routes: Routes = [
     {
         path: '',
-        pathMatch: 'full',
         component: FoldersComponent,
+    },
+    {
+        path: '**',
+        redirectTo: '',
+        pathMatch: 'full',
     },
 ];
 
