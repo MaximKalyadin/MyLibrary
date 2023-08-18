@@ -5,9 +5,9 @@ import {
     Output,
 } from '@angular/core';
 import { FilterStoreService } from '../../data-services/filter-store.service';
-import { ITag } from '@core/models/basic-models';
 import { Observable } from 'rxjs';
 import { Utils } from '@core/models/types/utils';
+import { ITag } from '@core/models/intermediate-models';
 
 @Component({
     selector: 'app-filter',

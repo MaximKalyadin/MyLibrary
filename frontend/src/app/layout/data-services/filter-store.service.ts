@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ComponentStore } from '@ngrx/component-store';
-import { ITag } from '@core/models/basic-models';
 import { map, Observable, of, tap, withLatestFrom } from 'rxjs';
-import { IFilterConfig } from '@core/models/intermediate-models';
+import { IFilterConfig, ITag } from '@core/models/intermediate-models';
 import { FormControl, FormGroup } from '@angular/forms';
 import { TUI_DEFAULT_MATCHER, tuiPure } from '@taiga-ui/cdk';
 import { Utils } from '@core/models/types/utils';

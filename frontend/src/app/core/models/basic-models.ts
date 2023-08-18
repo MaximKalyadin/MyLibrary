@@ -1,5 +1,16 @@
-export interface ITag {
+export interface Tag {
     id?: string;
     name: string;
-    select: boolean;
+}
+
+export interface Folder {
+    id?: string;
+    name: string;
+    tagId?: string;
+    pictureId?: string;
+}
+
+export interface Picture {
+    id?: string;
+    link: string;
 }

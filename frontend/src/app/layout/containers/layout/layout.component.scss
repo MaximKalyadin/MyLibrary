@@ -2,8 +2,8 @@
     display: grid;
     grid-template-rows: auto 1fr;
     min-height: 100%;
+    height: 100%;
     max-width: 100vw;
-    height: calc(100% - 168px);
     width: 100%;
     position: relative;
 
@@ -18,11 +18,19 @@
         }
     }
 
+    &__container {
+        height: calc(100% - 168px);
+
+        @media (max-width: 900px) {
+            height: calc(100% - 188px);
+        }
+    }
+
     &__filter {
         max-width: 100vw;
     }
 
     @media (max-width: 768px) {
-        height: calc(100% - 188px);
+
     }
 }

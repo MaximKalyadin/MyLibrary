@@ -1,0 +1,15 @@
+<div class="folder" (click)="navigate()">
+    <img src="assets/svg/folder.svg" alt="Папка" class="folder__back" />
+    <div class="folder__card">
+        <img *ngIf="image" [src]="image" alt="" class="folder__img" />
+    </div>
+    <div class="folder__description">
+        <span class="folder__description__title"> {{ title }} </span>
+        <div class="folder__description__icon">
+            <tui-svg
+                [src]="'tuiIconMoreVerticalLarge'"
+                (click)="$event.stopPropagation(); edit()"
+            />
+        </div>
+    </div>
+</div>
