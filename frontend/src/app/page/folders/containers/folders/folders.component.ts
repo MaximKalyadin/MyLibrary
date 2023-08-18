@@ -6,4 +6,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     styleUrls: ['./folders.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FoldersComponent {}
+export class FoldersComponent {
+    count = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
+}

@@ -6,6 +6,12 @@
 
     max-width: 328px;
     cursor: pointer;
+
+    @media (max-width: 900px) {
+        max-width: 172px;
+        gap: 40px;
+    }
+
     &:hover {
         opacity: 0.8;
     }
@@ -26,6 +32,12 @@
 
         position: absolute;
         top: 40px;
+
+        @media (max-width: 900px) {
+            max-width: 162px;
+            max-height: 109px;
+            top: 21px;
+        }
     }
 
     &__img {
@@ -42,6 +54,12 @@
         height: 50px;
         width: 100%;
 
+        @media (max-width: 900px) {
+            max-height: 36px;
+            height: 36px;
+        }
+
+
         &__title {
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
@@ -54,6 +72,10 @@
             line-height: 100%;
             max-width: 294px;
             width: 100%;
+
+            @media (max-width: 900px) {
+                font-size: 16px;
+            }
         }
 
         &__icon {
