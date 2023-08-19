@@ -15,6 +15,7 @@ import {
     TuiInputTagModule,
     TuiMultiSelectModule,
     TuiTagModule,
+    TuiTilesModule,
 } from '@taiga-ui/kit';
 import { TuiLetModule, TuiValueChangesModule } from '@taiga-ui/cdk';
 import { TuiRippleModule } from '@taiga-ui/addon-mobile';
@@ -36,6 +37,7 @@ import { TuiRippleModule } from '@taiga-ui/addon-mobile';
         TuiDataListWrapperModule,
         TuiDataListModule,
         TuiRippleModule,
+        TuiTilesModule,
     ],
     exports: [
         TuiSvgModule,
@@ -54,6 +56,7 @@ import { TuiRippleModule } from '@taiga-ui/addon-mobile';
         TuiDataListWrapperModule,
         TuiDataListModule,
         TuiRippleModule,
+        TuiTilesModule,
     ],
 })
 export class TaigaModule {}
