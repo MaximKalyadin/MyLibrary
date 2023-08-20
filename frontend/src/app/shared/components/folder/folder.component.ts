@@ -17,6 +17,7 @@ import { Router } from '@angular/router';
 export class FolderComponent {
     @Output() editFolder: EventEmitter<void> = new EventEmitter<void>();
     @Input({ required: true }) title: string = '';
+    @Input({ required: true }) tag: string = '';
     @Input() image: string | null = null;
     @Input() navigation: string | null = null;
 

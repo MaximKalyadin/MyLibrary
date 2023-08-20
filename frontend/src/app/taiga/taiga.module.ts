@@ -4,6 +4,7 @@ import {
     TuiDataListModule,
     TuiHintModule,
     TuiModeModule,
+    TuiRootModule,
     TuiScrollbarModule,
     TuiSvgModule,
     TuiTextfieldControllerModule,
@@ -38,6 +39,7 @@ import { TuiRippleModule } from '@taiga-ui/addon-mobile';
         TuiDataListModule,
         TuiRippleModule,
         TuiTilesModule,
+        TuiRootModule,
     ],
     exports: [
         TuiSvgModule,
@@ -57,6 +59,7 @@ import { TuiRippleModule } from '@taiga-ui/addon-mobile';
         TuiDataListModule,
         TuiRippleModule,
         TuiTilesModule,
+        TuiRootModule,
     ],
 })
 export class TaigaModule {}

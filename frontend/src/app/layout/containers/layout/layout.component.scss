@@ -8,6 +8,10 @@
     position: relative;
     overflow: hidden;
 
+    &__tui-root{
+        max-width: 100vw;
+    }
+
     &__navigation {
         position: fixed;
         bottom: 30px;
