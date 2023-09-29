@@ -4,6 +4,8 @@ import {
     TuiDialogModule,
     TuiAlertModule,
     TUI_SANITIZER,
+    TUI_MODE,
+    TUI_DIALOG_DEFAULT_OPTIONS,
 } from '@taiga-ui/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule, isDevMode } from '@angular/core';
@@ -31,6 +33,7 @@ import { FilterStoreService } from './layout/data-services/filter-store.service'
     ],
     providers: [
         { provide: TUI_SANITIZER, useClass: NgDompurifySanitizer },
+        { provide: TUI_MODE, useValue: 'onDark' },
         FilterStoreService,
     ],
     bootstrap: [AppComponent],

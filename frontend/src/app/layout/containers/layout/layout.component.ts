@@ -8,6 +8,8 @@ import { AuthService } from '@core/services/auth.service';
 import { PolymorpheusComponent } from '@tinkoff/ng-polymorpheus';
 import { FolderCreateComponent } from '@shared/components/folder-create/folder-create.component';
 import { TuiDialogService } from '@taiga-ui/core';
+import { TuiDestroyService } from '@taiga-ui/cdk';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
     selector: 'app-layout',
@@ -20,9 +22,9 @@ export class LayoutComponent {
         new PolymorpheusComponent(FolderCreateComponent, this.injector),
         {
             data: 237,
+            closeable: false,
             dismissible: true,
-            size: 'l',
-            closeable: true,
+            size: 'm',
         },
     );
 

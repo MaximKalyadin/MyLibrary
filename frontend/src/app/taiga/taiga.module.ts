@@ -14,17 +14,19 @@ import {
 import {
     TuiBadgeModule,
     TuiDataListWrapperModule,
+    TuiInputFilesModule,
     TuiInputModule,
     TuiInputPasswordModule,
     TuiInputTagModule,
     TuiIslandModule,
     TuiLineClampModule,
+    TuiMarkerIconModule,
     TuiMultiSelectModule,
     TuiTagModule,
     TuiTilesModule,
 } from '@taiga-ui/kit';
 import { TuiLetModule, TuiValueChangesModule } from '@taiga-ui/cdk';
-import { TuiRippleModule } from '@taiga-ui/addon-mobile';
+import { TuiRippleModule, TuiSheetDialogModule } from '@taiga-ui/addon-mobile';
 @NgModule({
     imports: [
         TuiSvgModule,
@@ -50,6 +52,9 @@ import { TuiRippleModule } from '@taiga-ui/addon-mobile';
         TuiInputPasswordModule,
         TuiLinkModule,
         TuiDialogModule,
+        TuiInputFilesModule,
+        TuiMarkerIconModule,
+        TuiSheetDialogModule,
     ],
     exports: [
         TuiSvgModule,
@@ -75,6 +80,9 @@ import { TuiRippleModule } from '@taiga-ui/addon-mobile';
         TuiInputPasswordModule,
         TuiLinkModule,
         TuiDialogModule,
+        TuiInputFilesModule,
+        TuiMarkerIconModule,
+        TuiSheetDialogModule,
     ],
 })
 export class TaigaModule {}

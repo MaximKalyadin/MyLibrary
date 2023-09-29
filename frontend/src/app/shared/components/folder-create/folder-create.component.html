@@ -1,1 +1,105 @@
-<div class="main"></div>
+<ng-template #main>
+    <div class="main">
+        <div class="main__first-content">
+            <div class="main__title">
+                <span class="main__text">{{ title }}</span>
+                <button
+                    appearance="icon"
+                    icon="tuiIconCloseLarge"
+                    tuiIconButton
+                    type="button"
+                    size="s"
+                    (click)="close()"
+                ></button>
+            </div>
+
+            <tui-input-files
+                tuiMode="onDark"
+                class="main__control-file"
+                [formControl]="control"
+            >
+                <ng-template let-dragged>
+                    <div *ngIf="dragged; else base" class="main__input-content">
+                        <tui-marker-icon
+                            mode="link"
+                            src="tuiIconCheckLarge"
+                            tuiMode="onDark"
+                            [size]="sizeButton"
+                        ></tui-marker-icon>
+                        <div
+                            class="main__text main__text-fs-16 main__text-lh-20"
+                        >
+                            Картинка подходит
+                        </div>
+                    </div>
+                    <ng-template #base>
+                        <div class="main__input-content">
+                            <tui-marker-icon
+                                mode="link"
+                                src="tuiIconUploadCloudLarge"
+                                tuiMode="onDark"
+                                [size]="sizeButton"
+                            ></tui-marker-icon>
+                            <div
+                                class="main__text main__text-fs-16 main__text-lh-20"
+                            >
+                                <a tuiLink class="main__text-color-main"
+                                    >Выберите картинку</a
+                                >
+                                или перетяните их сюда
+                            </div>
+                        </div>
+                    </ng-template>
+                </ng-template>
+            </tui-input-files>
+
+            <tui-input
+                [formControl]="name"
+                [tuiTextfieldCleaner]="true"
+                [tuiTextfieldLabelOutside]="true"
+                tuiMode="onDark"
+                tuiTextfieldSize="m"
+            >
+                <span>Название папки</span>
+                <input tuiTextfield placeholder="Название папки" />
+            </tui-input>
+
+            <tui-input
+                [formControl]="tag"
+                [tuiTextfieldCleaner]="true"
+                [tuiTextfieldLabelOutside]="true"
+                tuiMode="onDark"
+                tuiTextfieldSize="m"
+            >
+                <span>Тег</span>
+                <input tuiTextfield placeholder="Тег" />
+            </tui-input>
+        </div>
+        <div class="main__actions">
+            <button
+                appearance="primary"
+                tuiButton
+                type="button"
+                [size]="sizeButton"
+            >
+                <span class="main__text main__text-fs-20 main__text-lh-20">{{
+                    actionEdit
+                }}</span>
+            </button>
+            <button
+                tuiMode="onDark"
+                *ngIf="isEdit"
+                appearance="secondary"
+                tuiButton
+                type="button"
+                [size]="sizeButton"
+            >
+                <span class="main__text main__text-fs-20 main__text-lh-20"
+                    >Удалить</span
+                >
+            </button>
+        </div>
+    </div>
+</ng-template>
+
+<ng-container [ngTemplateOutlet]="main"></ng-container>
