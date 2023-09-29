@@ -3,14 +3,12 @@ import {
     Component,
     HostListener,
     Inject,
-    Input,
-    OnChanges,
-    SimpleChanges,
 } from '@angular/core';
 import { POLYMORPHEUS_CONTEXT } from '@tinkoff/ng-polymorpheus';
 import { TuiDialogContext, TuiDialogService } from '@taiga-ui/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Utils } from '@core/models/types/utils';
+import { IContextFolderDialog } from '@core/models/intermediate-models';
 
 @Component({
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -18,8 +16,8 @@ import { Utils } from '@core/models/types/utils';
     styleUrls: ['./folder-create.component.scss'],
     templateUrl: './folder-create.component.html',
 })
-export class FolderCreateComponent implements OnChanges {
-    @Input() readonly isEdit: boolean = false;
+export class FolderCreateComponent {
+    protected isEdit: boolean = false;
     protected title: string = 'Создание папки';
     protected actionEdit: string = 'Создать';
     protected readonly control = new FormControl('', {
@@ -39,14 +37,17 @@ export class FolderCreateComponent implements OnChanges {
     constructor(
         @Inject(TuiDialogService) private readonly dialogs: TuiDialogService,
         @Inject(POLYMORPHEUS_CONTEXT)
-        private readonly context: TuiDialogContext<number, number>,
+        private readonly context: TuiDialogContext<
+            number,
+            IContextFolderDialog
+        >,
     ) {
+        this.isEdit = context.data.isEdit;
+        this.title = context.data.isEdit
+            ? 'Редактирование папки'
+            : 'Создание папки';
+        this.actionEdit = context.data.isEdit ? 'Редактировать' : 'Создать';
         this.setSize();
-    }
-
-    ngOnChanges(changes: SimpleChanges): void {
-        this.title = this.isEdit ? 'Редактирование папки' : 'Создание папки';
-        this.actionEdit = this.isEdit ? 'Редактировать' : 'Создать';
     }
     protected create(): void {
         this.context.completeWith(2);

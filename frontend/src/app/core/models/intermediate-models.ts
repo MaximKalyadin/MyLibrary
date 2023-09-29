@@ -8,3 +8,7 @@ export interface IFilterConfig {
     search?: string;
     searchTags?: ITag[];
 }
+
+export interface IContextFolderDialog {
+    isEdit: boolean;
+}

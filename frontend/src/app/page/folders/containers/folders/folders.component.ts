@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { DialogService } from '@core/services/dialog.service';
 
 @Component({
     selector: 'app-folders',
@@ -8,4 +9,9 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 })
 export class FoldersComponent {
     count = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
+
+    constructor(private readonly dialogService: DialogService) {}
+    protected editFolder(): void {
+        this.dialogService.open(true);
+    }
 }
