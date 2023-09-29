@@ -1,16 +1,16 @@
-@import '@taiga-ui/core/styles/taiga-ui-local.scss';
+@import url('@taiga-ui/core/styles/taiga-ui-local.scss');
 
 :root {
     background: #131313;
 
-    // colors
+    /* colors */
     --color-background: #131313;
     --color-autofill: #2A2A2A;
     --color-icon: #424242;
     --color-main: #6400C8;
     --color-text: white;
 
-    // tui override
+    /* tui override */
     --tui-autofill: var(--color-autofill);
     --tui-font-heading: 'Roboto', sans-serif;
     --tui-font-text: 'Roboto', sans-serif;
@@ -28,8 +28,8 @@ html {
 }
 
 body {
-    -webkit-overflow-scrolling: touch;
     position: relative;
+    -webkit-overflow-scrolling: touch;
     width: 100%;
     height: 100%;
     margin: 0;
@@ -42,7 +42,7 @@ input {
     caret-color: var(--color-main) !important;
 }
 
-[tuiWrapper][data-appearance=input-file]:after {
+[tuiWrapper][data-appearance="input-file"]:after {
     border: 1px dashed var(--color-main) !important;
 }
 

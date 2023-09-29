@@ -1,9 +1,9 @@
 .navigation {
+    z-index: 1000;
+    display: flex;
     border-radius: 20px;
     background: var(--color-text);
     box-shadow: 0 0 10px 0 var(--color-background);
-    z-index: 1000;
-    display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
     align-items: center;
@@ -12,23 +12,9 @@
     gap: 100px;
     padding: 0 40px;
 
-    @media (max-width: 1200px) {
-        gap: 30px;
-        padding: 0 30px;
-    }
-
-    @media (max-width: 768px) {
-        height: 52px;
-    }
-
-    @media (max-width: 300px) {
-        gap: 20px;
-        padding: 0 20px;
-    }
-
     &__menu {
-        color: var(--color-icon);
         display: flex;
+        color: var(--color-icon);
         flex-direction: row;
         flex-wrap: nowrap;
         align-items: center;
@@ -57,7 +43,7 @@
         font-weight: 400;
         line-height: normal;
 
-        @media (max-width: 768px) {
+        @media (width <= 768px) {
             display: none;
         }
     }
@@ -66,5 +52,19 @@
         height: 1.7rem;
         width: 1.7rem;
         font-size: 1.2rem;
+    }
+
+    @media (width <= 1200px) {
+        gap: 30px;
+        padding: 0 30px;
+    }
+
+    @media (width <= 768px) {
+        height: 52px;
+    }
+
+    @media (width <= 300px) {
+        gap: 20px;
+        padding: 0 20px;
     }
 }
