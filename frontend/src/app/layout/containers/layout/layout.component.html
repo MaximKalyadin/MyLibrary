@@ -1,12 +1,12 @@
 <div class="main">
-    <tui-root class="main__tui-root">
-        <app-filter class="main__filter" />
-    </tui-root>
+    <tui-root *ngIf="isAuth()" class="main__tui-root">
+        <app-filter class="main__filter" (creation)="create()" />
 
-    <tui-scrollbar>
-        <div class="main__container">
-            <router-outlet />
-        </div>
-    </tui-scrollbar>
-    <app-navigation-panel class="main__navigation" />
+        <tui-scrollbar class="main__scroll-height">
+            <div class="main__container">
+                <router-outlet />
+            </div>
+        </tui-scrollbar>
+        <app-navigation-panel *ngIf="isAuth()" class="main__navigation" />
+    </tui-root>
 </div>

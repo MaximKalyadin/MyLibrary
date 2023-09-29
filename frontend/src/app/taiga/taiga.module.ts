@@ -2,7 +2,9 @@ import { NgModule } from '@angular/core';
 import {
     TuiButtonModule,
     TuiDataListModule,
+    TuiDialogModule,
     TuiHintModule,
+    TuiLinkModule,
     TuiModeModule,
     TuiRootModule,
     TuiScrollbarModule,
@@ -13,6 +15,7 @@ import {
     TuiBadgeModule,
     TuiDataListWrapperModule,
     TuiInputModule,
+    TuiInputPasswordModule,
     TuiInputTagModule,
     TuiIslandModule,
     TuiLineClampModule,
@@ -44,6 +47,9 @@ import { TuiRippleModule } from '@taiga-ui/addon-mobile';
         TuiRootModule,
         TuiIslandModule,
         TuiLineClampModule,
+        TuiInputPasswordModule,
+        TuiLinkModule,
+        TuiDialogModule,
     ],
     exports: [
         TuiSvgModule,
@@ -66,6 +72,9 @@ import { TuiRippleModule } from '@taiga-ui/addon-mobile';
         TuiRootModule,
         TuiIslandModule,
         TuiLineClampModule,
+        TuiInputPasswordModule,
+        TuiLinkModule,
+        TuiDialogModule,
     ],
 })
 export class TaigaModule {}

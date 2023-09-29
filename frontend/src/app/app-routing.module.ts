@@ -11,6 +11,13 @@ const routes: Routes = [
                 pathMatch: 'full',
             },
             {
+                path: 'Login',
+                loadChildren: () =>
+                    import('../app/page/login/login.module').then(
+                        (m) => m.LoginModule,
+                    ),
+            },
+            {
                 path: 'Folders',
                 loadChildren: () =>
                     import('../app/page/folders/folders.module').then(

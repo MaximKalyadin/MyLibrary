@@ -1,4 +1,13 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    Inject,
+    Injector,
+} from '@angular/core';
+import { AuthService } from '@core/services/auth.service';
+import { PolymorpheusComponent } from '@tinkoff/ng-polymorpheus';
+import { FolderCreateComponent } from '@shared/components/folder-create/folder-create.component';
+import { TuiDialogService } from '@taiga-ui/core';
 
 @Component({
     selector: 'app-layout',
@@ -6,4 +15,38 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     styleUrls: ['./layout.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class LayoutComponent {}
+export class LayoutComponent {
+    private readonly dialog = this.dialogs.open<number>(
+        new PolymorpheusComponent(FolderCreateComponent, this.injector),
+        {
+            data: 237,
+            dismissible: true,
+            size: 'l',
+            closeable: true,
+        },
+    );
+
+    constructor(
+        private readonly auth: AuthService,
+        @Inject(TuiDialogService) private readonly dialogs: TuiDialogService,
+        @Inject(Injector) private readonly injector: Injector,
+    ) {}
+
+    create(): void {
+        this.dialog.subscribe({
+            next: (data) => {
+                console.log(data);
+            },
+            error: (error) => {
+                console.log(error);
+            },
+            complete: () => {
+                console.log('aLL');
+            },
+        });
+    }
+
+    isAuth(): boolean {
+        return this.auth.isAuth();
+    }
+}

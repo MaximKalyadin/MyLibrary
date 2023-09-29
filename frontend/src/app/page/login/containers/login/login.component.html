@@ -1,0 +1,136 @@
+<div class="login">
+    <div class="login__text-container">
+        <div class="login__list" *ngFor="let item of description">
+            <span class="login__title">
+                {{ item.title }}
+            </span>
+            <span class="login__description">
+                {{ item.description }}
+            </span>
+        </div>
+    </div>
+    <div class="login__form-container">
+        <div class="login__form">
+            <span class="login__title-form">Войдите в аккаунт</span>
+            <div class="login__div-middle">
+                <div class="login__buttons-container">
+                    <button
+                        appearance="secondary"
+                        tuiButton
+                        type="button"
+                        tuiMode="onDark"
+                        [size]="sizeButton"
+                    >
+                        <div class="login__button-value">
+                            <img
+                                class="login__img"
+                                src="assets/svg/yandex.svg"
+                                alt="Yandex"
+                            />
+                            <span
+                                class="login__title-form login__fs-16 login__lh-20"
+                                >Войти через Яндекс</span
+                            >
+                        </div>
+                    </button>
+                    <button
+                        appearance="secondary"
+                        tuiButton
+                        type="button"
+                        tuiMode="onDark"
+                        [size]="sizeButton"
+                    >
+                        <div class="login__button-value">
+                            <img
+                                class="login__img"
+                                src="assets/svg/google.svg"
+                                alt="Yandex"
+                            />
+                            <span
+                                class="login__title-form login__fs-16 login__lh-20"
+                                >Войти через Google</span
+                            >
+                        </div>
+                    </button>
+                    <button
+                        appearance="secondary"
+                        tuiButton
+                        type="button"
+                        tuiMode="onDark"
+                        [size]="sizeButton"
+                    >
+                        <div class="login__button-value">
+                            <img
+                                class="login__img"
+                                src="assets/svg/apple.svg"
+                                alt="Yandex"
+                            />
+                            <span
+                                class="login__title-form login__fs-16 login__lh-20"
+                                >Войти через Apple</span
+                            >
+                        </div>
+                    </button>
+                </div>
+                <span class="login__title-form login__fs-20 login__lh-20"
+                    >или</span
+                >
+                <div class="login__inputs">
+                    <ng-container [formGroup]="form">
+                        <tui-input
+                            [formControl]="form.controls.login"
+                            [tuiTextfieldCleaner]="true"
+                            [tuiTextfieldLabelOutside]="true"
+                            tuiMode="onDark"
+                            [tuiTextfieldSize]="sizeInput"
+                        >
+                            <span
+                                class="login__title-form login__fs-16 login__lh-normal"
+                                >Логин</span
+                            >
+                            <input tuiTextfield placeholder="Логин" />
+                        </tui-input>
+                        <tui-input-password
+                            [formControl]="form.controls.password"
+                            [tuiTextfieldCleaner]="true"
+                            [tuiTextfieldLabelOutside]="true"
+                            tuiMode="onDark"
+                            [tuiTextfieldSize]="sizeInput"
+                        >
+                            <span
+                                class="login__title-form login__fs-16 login__lh-normal"
+                                >Пароль</span
+                            >
+                            <input tuiTextfield placeholder="Пароль" />
+                        </tui-input-password>
+                    </ng-container>
+                    <button
+                        appearance="primary"
+                        tuiButton
+                        class="login__button-value"
+                        type="button"
+                        [size]="sizeButton"
+                    >
+                        <div class="login__button-value">
+                            <span
+                                class="login__title-form login__fs-20 login__lh-20"
+                                >Войти</span
+                            >
+                        </div>
+                    </button>
+                </div>
+            </div>
+            <div class="login__footer-container">
+                <span
+                    class="login__not-acc login__title-form login__fs-16 login__lh-20"
+                    >Нет аккаунта?</span
+                >
+                <a
+                    tuiLink
+                    class="login__title-form login__fs-16 login__lh-normal"
+                    >Зарегистрируйтесь</a
+                >
+            </div>
+        </div>
+    </div>
+</div>
