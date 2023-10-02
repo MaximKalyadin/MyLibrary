@@ -5,7 +5,6 @@ import {
     TuiAlertModule,
     TUI_SANITIZER,
     TUI_MODE,
-    TUI_DIALOG_DEFAULT_OPTIONS,
 } from '@taiga-ui/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule, isDevMode } from '@angular/core';
@@ -16,6 +15,7 @@ import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { LayoutModule } from './layout/layout.module';
 import { FilterStoreService } from './layout/data-services/filter-store.service';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
     declarations: [AppComponent],
@@ -25,6 +25,7 @@ import { FilterStoreService } from './layout/data-services/filter-store.service'
         ServiceWorkerModule.register('ngsw-worker.js', {
             enabled: !isDevMode(),
         }),
+        NgxSpinnerModule,
         BrowserAnimationsModule,
         TuiRootModule,
         TuiDialogModule,

@@ -41,7 +41,8 @@
               "node_modules/@taiga-ui/core/styles/taiga-ui-fonts.less",
               "node_modules/@taiga-ui/styles/taiga-ui-global.less",
               "src/styles.scss",
-              "src/styles/bootstrap-grid.css"
+              "src/styles/bootstrap-grid.css",
+              "node_modules/ngx-spinner/animations/square-jelly-box.css"
             ],
             "scripts": [],
             "serviceWorker": true,

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from '@core/guards/authGuard';
 
 const routes: Routes = [
     {
@@ -23,6 +24,7 @@ const routes: Routes = [
                     import('../app/page/folders/folders.module').then(
                         (m) => m.FoldersModule,
                     ),
+                canActivate: [AuthGuard],
             },
         ],
     },

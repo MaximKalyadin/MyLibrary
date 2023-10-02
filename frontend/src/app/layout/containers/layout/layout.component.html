@@ -1,8 +1,17 @@
 <div class="main">
-    <tui-root *ngIf="isAuth()" class="main__tui-root">
-        <app-filter class="main__filter" (creation)="create()" />
+    <tui-root class="main__tui-root">
+        <app-filter
+            *ngIf="isAuth()"
+            class="main__filter"
+            (creation)="create()"
+        />
 
-        <tui-scrollbar class="main__scroll-height">
+        <tui-scrollbar
+            [ngClass]="{
+                'main__scroll-height': isAuth(),
+                'main__scroll-full-height': !isAuth()
+            }"
+        >
             <div class="main__container">
                 <router-outlet />
             </div>
@@ -10,3 +19,4 @@
         <app-navigation-panel *ngIf="isAuth()" class="main__navigation" />
     </tui-root>
 </div>
+<ngx-spinner name="spinner" />

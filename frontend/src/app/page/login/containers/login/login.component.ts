@@ -8,6 +8,7 @@ import { LoginStoreService } from '../../data-services/login-store.service';
 import { loginForm } from '../../login.foms';
 import { Utils } from '@core/models/types/utils';
 import { TuiSizeL, TuiSizeS } from '@taiga-ui/core';
+import { Observable } from 'rxjs';
 
 @Component({
     selector: 'app-login',
@@ -65,7 +66,7 @@ export class LoginComponent {
     }
 
     constructor(private readonly store: LoginStoreService) {
-        this.form = store.form;
+        this.form = store.loginForm;
         this.setSize();
     }
 
@@ -76,5 +77,9 @@ export class LoginComponent {
             this.sizeInput = 'l';
             this.sizeButton = 'xl';
         }
+    }
+
+    login() {
+        this.store.login();
     }
 }

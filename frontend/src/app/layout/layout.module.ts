@@ -6,10 +6,17 @@ import { NavigationPanelComponent } from './components/navigation-panel/navigati
 import { TaigaModule } from '../taiga/taiga.module';
 import { FilterComponent } from './components/filter/filter.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
     declarations: [LayoutComponent, NavigationPanelComponent, FilterComponent],
-    imports: [RouterModule, CommonModule, TaigaModule, ReactiveFormsModule],
+    imports: [
+        RouterModule,
+        CommonModule,
+        TaigaModule,
+        ReactiveFormsModule,
+        NgxSpinnerModule,
+    ],
     exports: [LayoutComponent],
     providers: [],
 })

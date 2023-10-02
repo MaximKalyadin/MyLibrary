@@ -6,6 +6,7 @@ import { TaigaModule } from '../../taiga/taiga.module';
 import { LoginComponent } from './containers/login/login.component';
 import { LoginRoutingModule } from './login-routing.module';
 import { LoginFormService } from './data-services/login-form.service';
+import { NgxUiLoaderModule } from 'ngx-ui-loader';
 
 @NgModule({
     declarations: [LoginComponent],
@@ -15,6 +16,7 @@ import { LoginFormService } from './data-services/login-form.service';
         SharedModule,
         TaigaModule,
         LoginRoutingModule,
+        NgxUiLoaderModule,
     ],
     providers: [LoginFormService],
 })

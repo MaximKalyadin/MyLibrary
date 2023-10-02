@@ -4,9 +4,15 @@ import { Injectable } from '@angular/core';
     providedIn: 'root',
 })
 export class AuthService {
+    private auth = false;
+
     constructor() {}
 
     isAuth(): boolean {
-        return true;
+        return this.auth;
+    }
+
+    setAuth(value: boolean): void {
+        this.auth = value;
     }
 }
