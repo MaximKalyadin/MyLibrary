@@ -5,7 +5,7 @@ import {
 } from '@angular/core';
 import { Description } from '../../login.interfaces';
 import { LoginStoreService } from '../../data-services/login-store.service';
-import { loginForm } from '../../login.foms';
+import { loginForm, signUpForm } from '../../login.foms';
 import { Utils } from '@core/models/types/utils';
 import { TuiSizeL, TuiSizeS } from '@taiga-ui/core';
 import { Observable } from 'rxjs';
@@ -18,7 +18,8 @@ import { Observable } from 'rxjs';
     providers: [LoginStoreService],
 })
 export class LoginComponent {
-    form: loginForm;
+    loginForm: loginForm;
+    signUpForm: signUpForm;
     description: Description[] = [
         {
             title: 'Книги',
@@ -59,6 +60,7 @@ export class LoginComponent {
 
     sizeInput: TuiSizeL | TuiSizeS = 'l';
     sizeButton: 'm' | 'l' | 'xl' | 's' | 'xs' = 'xl';
+    isSignUp: boolean = false;
 
     @HostListener('window:resize', [])
     private onResize() {
@@ -66,7 +68,8 @@ export class LoginComponent {
     }
 
     constructor(private readonly store: LoginStoreService) {
-        this.form = store.loginForm;
+        this.loginForm = store.loginForm;
+        this.signUpForm = store.signUpForm;
         this.setSize();
     }
 
@@ -79,7 +82,9 @@ export class LoginComponent {
         }
     }
 
-    login() {
+    login(): void {
         this.store.login();
     }
+
+    signup(): void {}
 }

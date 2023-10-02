@@ -11,8 +11,10 @@
     </div>
     <div class="login__form-container">
         <div class="login__form">
-            <span class="login__title-form">Войдите в аккаунт</span>
-            <div class="login__div-middle">
+            <span class="login__title-form">{{
+                isSignUp ? "Зарегистрируйтесь" : "Войдите в аккаунт"
+            }}</span>
+            <ng-template #signIn class="login__div-middle">
                 <div class="login__buttons-container">
                     <button
                         appearance="secondary"
@@ -76,9 +78,9 @@
                     >или</span
                 >
                 <div class="login__inputs">
-                    <ng-container [formGroup]="form">
+                    <ng-container [formGroup]="loginForm">
                         <tui-input
-                            [formControl]="form.controls.login"
+                            [formControl]="loginForm.controls.login"
                             [tuiTextfieldCleaner]="true"
                             [tuiTextfieldLabelOutside]="true"
                             tuiMode="onDark"
@@ -91,7 +93,7 @@
                             <input tuiTextfield placeholder="Логин" />
                         </tui-input>
                         <tui-input-password
-                            [formControl]="form.controls.password"
+                            [formControl]="loginForm.controls.password"
                             [tuiTextfieldCleaner]="true"
                             [tuiTextfieldLabelOutside]="true"
                             tuiMode="onDark"
@@ -109,6 +111,7 @@
                         tuiButton
                         class="login__button-value"
                         type="button"
+                        [disabled]="loginForm.invalid"
                         [size]="sizeButton"
                         (click)="login()"
                     >
@@ -120,16 +123,105 @@
                         </div>
                     </button>
                 </div>
-            </div>
+            </ng-template>
+            <ng-template #signUp class="login__div-middle">
+                <div class="login__inputs login__gap-60">
+                    <ng-container [formGroup]="signUpForm">
+                        <div class="login__inputs">
+                            <tui-input
+                                [formControl]="signUpForm.controls.email"
+                                [tuiTextfieldCleaner]="true"
+                                [tuiTextfieldLabelOutside]="true"
+                                tuiMode="onDark"
+                                [tuiTextfieldSize]="sizeInput"
+                            >
+                                <span
+                                    class="login__title-form login__fs-16 login__lh-normal"
+                                    >Email</span
+                                >
+                                <input tuiTextfield placeholder="Email" />
+                            </tui-input>
+                            <tui-input-phone
+                                [formControl]="signUpForm.controls.phone"
+                                [tuiTextfieldCleaner]="true"
+                                [tuiTextfieldLabelOutside]="true"
+                                tuiMode="onDark"
+                                [tuiTextfieldSize]="sizeInput"
+                            >
+                                <span
+                                    class="login__title-form login__fs-16 login__lh-normal"
+                                    >Номер телефона</span
+                                >
+                                <input
+                                    autocomplete="tel"
+                                    tuiTextfield
+                                    placeholder="Номер телефона"
+                                />
+                            </tui-input-phone>
+                        </div>
+                        <div class="login__inputs">
+                            <tui-input
+                                [formControl]="signUpForm.controls.password"
+                                [tuiTextfieldCleaner]="true"
+                                [tuiTextfieldLabelOutside]="true"
+                                tuiMode="onDark"
+                                [tuiTextfieldSize]="sizeInput"
+                            >
+                                <span
+                                    class="login__title-form login__fs-16 login__lh-normal"
+                                    >Пароль</span
+                                >
+                                <input tuiTextfield placeholder="Пароль" />
+                            </tui-input>
+                            <tui-input
+                                [formControl]="
+                                    signUpForm.controls.confirmPassword
+                                "
+                                [tuiTextfieldCleaner]="true"
+                                [tuiTextfieldLabelOutside]="true"
+                                tuiMode="onDark"
+                                [tuiTextfieldSize]="sizeInput"
+                            >
+                                <span
+                                    class="login__title-form login__fs-16 login__lh-normal"
+                                    >Подтверждение пароля</span
+                                >
+                                <input
+                                    tuiTextfield
+                                    placeholder="Подтверждение пароля"
+                                />
+                            </tui-input>
+                        </div>
+                        <button
+                            appearance="primary"
+                            tuiButton
+                            class="login__button-value"
+                            type="button"
+                            [disabled]="signUpForm.invalid"
+                            [size]="sizeButton"
+                            (click)="signup()"
+                        >
+                            <div class="login__button-value">
+                                <span
+                                    class="login__title-form login__fs-20 login__lh-20"
+                                    >Зарегистрироваться</span
+                                >
+                            </div>
+                        </button>
+                    </ng-container>
+                </div>
+            </ng-template>
+            <ng-container *ngIf="isSignUp; then signUp; else signIn" />
             <div class="login__footer-container">
                 <span
                     class="login__not-acc login__title-form login__fs-16 login__lh-20"
-                    >Нет аккаунта?</span
+                    >{{ isSignUp ? "Есть аккаунт?" : "Нет аккаунта?" }}</span
                 >
                 <a
                     tuiLink
                     class="login__title-form login__fs-16 login__lh-normal"
-                    >Зарегистрируйтесь</a
+                    (click)="isSignUp = !isSignUp"
+                    >{{ isSignUp ? "Войдите" : "Зарегистрируйтесь" }}</a
                 >
             </div>
         </div>

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { loginForm } from '../login.foms';
+import { loginForm, signUpForm } from '../login.foms';
 import { LoginFormService } from './login-form.service';
 import { LoginClientService } from './login-client.service';
 import { Router } from '@angular/router';
@@ -16,6 +16,7 @@ const defaultState: AuthorizationState = {};
 @Injectable()
 export class LoginStoreService extends ComponentStore<AuthorizationState> {
     loginForm: loginForm;
+    signUpForm: signUpForm;
     constructor(
         private readonly loginFormService: LoginFormService,
         private readonly client: LoginClientService,
@@ -26,6 +27,7 @@ export class LoginStoreService extends ComponentStore<AuthorizationState> {
     ) {
         super(defaultState);
         this.loginForm = loginFormService.getLoginForm();
+        this.signUpForm = loginFormService.getSignUpForm();
     }
 
     readonly login = this.effect((action$: Observable<void>) => {

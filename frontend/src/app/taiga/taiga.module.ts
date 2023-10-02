@@ -17,6 +17,7 @@ import {
     TuiInputFilesModule,
     TuiInputModule,
     TuiInputPasswordModule,
+    TuiInputPhoneModule,
     TuiInputTagModule,
     TuiIslandModule,
     TuiLineClampModule,
@@ -55,6 +56,7 @@ import { TuiRippleModule, TuiSheetDialogModule } from '@taiga-ui/addon-mobile';
         TuiInputFilesModule,
         TuiMarkerIconModule,
         TuiSheetDialogModule,
+        TuiInputPhoneModule,
     ],
     exports: [
         TuiSvgModule,
@@ -83,6 +85,7 @@ import { TuiRippleModule, TuiSheetDialogModule } from '@taiga-ui/addon-mobile';
         TuiInputFilesModule,
         TuiMarkerIconModule,
         TuiSheetDialogModule,
+        TuiInputPhoneModule,
     ],
 })
 export class TaigaModule {}
