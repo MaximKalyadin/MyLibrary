@@ -1,0 +1,36 @@
+<div class="card" (click)="navigate()" tuiRipple>
+    <img class="card__img" src="assets/card-example.png" alt="..." />
+    <div class="card__text">
+        <div class="card__title-container">
+            <span class="card__title"
+                >Patterns for Reactivity with Modern Vanilla JavaScript
+                dxcfbds</span
+            >
+            <div class="card__edit-icon">
+                <tui-svg
+                    [src]="'tuiIconMoreVerticalLarge'"
+                    (click)="$event.stopPropagation(); edit()"
+                />
+            </div>
+        </div>
+        <span class="card__description"
+            >“Reactivity” is how systems react to changes in data. There are
+            many types of reactivity, but for this article, reactivity is when
+            data changes, you do things. We handle a lot with JavaScript in
+            websites and web apps since the browser is an entirely asynchronous
+            environment. We must respond to user inputs, communicate with
+            servers, log, perform, etc. All these tasks involve updates to the
+            UI, Ajax requests, browser URLs, and navigation changes, making
+            cascading data changes a core aspect of web development.</span
+        >
+        <div class="card__date-container">
+            <span class="card__date">24.09.2023</span>
+            <div class="card__link-icon">
+                <tui-svg
+                    [src]="'tuiIconArrowUpRightLarge'"
+                    (click)="$event.stopPropagation(); edit()"
+                />
+            </div>
+        </div>
+    </div>
+</div>

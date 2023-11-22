@@ -26,6 +26,14 @@ const routes: Routes = [
                     ),
                 canActivate: [AuthGuard],
             },
+            {
+                path: 'Cards',
+                loadChildren: () =>
+                    import('src/app/page/cards/cards.module').then(
+                        (m) => m.CardsModule,
+                    ),
+                canActivate: [AuthGuard],
+            },
         ],
     },
     {

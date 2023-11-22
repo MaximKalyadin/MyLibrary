@@ -1,9 +1,11 @@
 <div class="folders">
     <app-folder
         class="folders__folder"
-        *ngFor="let i of count"
-        [tag]="'Angular'"
-        [title]="'Angular svsvs scals slabj'"
+        *ngFor="let folder of folders"
+        [tag]="folder.tag ?? ''"
+        [title]="folder.title"
+        [navigation]="folder.navigation"
+        [image]="folder.image"
         (editFolder)="editFolder()"
     />
 </div>

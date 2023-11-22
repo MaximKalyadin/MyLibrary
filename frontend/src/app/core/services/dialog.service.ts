@@ -1,7 +1,7 @@
 import { Inject, Injectable, Injector } from '@angular/core';
 import { TuiDialogService } from '@taiga-ui/core';
 import { PolymorpheusComponent } from '@tinkoff/ng-polymorpheus';
-import { FolderCreateComponent } from '@shared/components/folder-create/folder-create.component';
+import { FolderCreateComponent } from '../../page/folders/components/folder-create/folder-create.component';
 
 @Injectable({
     providedIn: 'root',

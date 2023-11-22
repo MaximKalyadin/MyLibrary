@@ -1,0 +1,8 @@
+<div class="cards">
+    <app-card
+        class="cards__card"
+        *ngFor="let card of cards"
+        [cardView]="card"
+        (editCard)="editCards()"
+    />
+</div>

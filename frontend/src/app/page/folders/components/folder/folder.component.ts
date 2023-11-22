@@ -2,7 +2,6 @@ import {
     ChangeDetectionStrategy,
     Component,
     EventEmitter,
-    Inject,
     Input,
     Output,
 } from '@angular/core';
@@ -19,9 +18,9 @@ export class FolderComponent {
     @Input({ required: true }) title: string = '';
     @Input({ required: true }) tag: string = '';
     @Input() image: string | null = null;
-    @Input() navigation: string | null = null;
+    @Input({ required: true }) navigation: string = '';
 
-    private readonly router: Router = Inject(Router);
+    constructor(private readonly router: Router) {}
 
     edit(): void {
         this.editFolder.emit();
